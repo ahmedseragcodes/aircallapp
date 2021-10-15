@@ -15,7 +15,7 @@ const CallFeed = (props) => {
     useEffect(()=>{
         props.fetchCalls();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[refreshHold])
     
 
     return (
@@ -23,7 +23,7 @@ const CallFeed = (props) => {
             {
                 props.allCalls.map((call)=>{
                     return(
-                        <div className="individualCallCard">
+                        <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
                             <Button>Archive</Button>
                         </div>

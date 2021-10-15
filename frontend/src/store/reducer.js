@@ -1,3 +1,4 @@
+import { ClickAwayListener } from "@mui/material";
 import React from "react";
 import { FETCH_CALLS_SUCCESS, FETCH_CALLS_FAILURE, ARCHIVE_CALL_SUCCESS, ARCHIVE_CALL_FAILURE } from "./actions"
 
@@ -13,6 +14,11 @@ const reducer = (state=initialState, action)=>{
             return {
                 ...state,
                 allCalls: action.payload,
+                archivedCalls: action.payload.map((callObj)=>{
+                    if (callObj.is_archived === true){
+                        return callObj
+                    }
+                }),
             };
         case(FETCH_CALLS_FAILURE):
             return {
