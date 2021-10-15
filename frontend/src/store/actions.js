@@ -6,8 +6,12 @@ export const ARCHIVE_CALL_SUCCESS = "ARCHIVE_CALL_SUCCESS";
 export const ARCHIVE_CALL_FAILURE = "ARCHIVE_CALL_FAILURE";
 export const FETCH_ARCHIVED_SUCCESS = "FETCH_ARCHIVED_SUCCESS";
 export const FETCH_ARCHIVED_FAILURE = "FETCH_ARCHIVED_FAILURE";
+export const UN_ARCHIVE_CALL_SUCCESS="UN_ARCHIVE_CALL_SUCCESS";
+export const UN_ARCHIVE_CALL_FAILURE="UN_ARCHIVE_CALL_FAILURE";
 
-//Redux Thunk For Fetching Calls, 2 Actions Built In
+//ACTIONS
+
+//[GET] All Calls, 2 Actions Contained
 export const fetchCalls = () => (dispatch) => {
 
     axios.get('https://aircall-job.herokuapp.com/activities')
@@ -21,7 +25,7 @@ export const fetchCalls = () => (dispatch) => {
         })  
 }
 
-//Redux Thunk For Archiving Call, 2 Actions Built In
+//[POST] Archived Call, 2 Actions Contained
 //POST should be changed to PUT, but API only supports POST for now according to ReadMe, consult backend when time available
 export const archiveCall = (callToArchive) => (dispatch)=>{
 
@@ -32,7 +36,7 @@ export const archiveCall = (callToArchive) => (dispatch)=>{
 
     axios.post(`https://aircall-job.herokuapp.com/activities/${reformattedCallToArchive.id}`, reformattedCallToArchive)
     .then((res)=>{
-        console.log("SUCCEEDED ARCHIVING CALL", res);
+        console.log("SUCCEEDED ARCHIVING CALL", res.data);
         dispatch({ type: ARCHIVE_CALL_SUCCESS, payload: res.data })
     })
     .catch((err)=>{
@@ -41,7 +45,7 @@ export const archiveCall = (callToArchive) => (dispatch)=>{
     })
 }
 
-//Redux thunk for fetching archived calls, 2 actions contained
+// [GET] Archived Calls, 2 Actions Contained
 export const fetchArchivedCalls = () => (dispatch) => {
     axios.get('https://aircall-job.herokuapp.com/activities')
     .then((res)=>{
@@ -58,4 +62,23 @@ export const fetchArchivedCalls = () => (dispatch) => {
         console.log("FAILED FETCHING ARCHIVED CALLS", err.message);
         dispatch({ type: FETCH_ARCHIVED_FAILURE, payload: err.message });
     })
+}
+
+//[POST] Unarchived Call, 2 Actions Contained
+export const unarchiveCall = (callToUnarchive) => (dispatch) => {
+
+    const reformattedCallToUnarchive = { ...callToUnarchive,
+        is_archived: false,
+    }
+
+    axios.post(`https://aircall-job.herokuapp.com/activities/${reformattedCallToUnarchive.id}`, reformattedCallToUnarchive)
+    .then((res)=>{
+        console.log("SUCCEEDED UN-ARCHIVING CALL", res.data);
+        dispatch({ type: UN_ARCHIVE_CALL_SUCCESS, payload: res.data })
+    })
+    .catch((err)=>{
+        console.log("FAILED UN-ARCHIVING CALL", err.message);
+        dispatch({ type: UN_ARCHIVE_CALL_FAILURE, payload: err.message })
+    })
+
 }
