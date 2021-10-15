@@ -6,6 +6,8 @@ import { Link, Route, Switch } from "react-router-dom";
 import "./styling/app.css";
 import "./styling/body.css";
 import "./styling/header.css";
+import "./styling/nav.scss";
+import Button from "@mui/material/Button";
 //Comp Imports
 import Header from "./components/header";
 import CallFeed from "./components/callFeed";
@@ -17,14 +19,31 @@ const App = () => {
       <Header/>
       <div className="callFeedNavContainer">
         <nav className="callFeedNav">
-          <Link to="/">Home</Link>
-          <Link to="/calls">Calls</Link>
-          <Link to="/archived">Archived Calls</Link>
+          <Button style={{backgroundColor: "#32CD32"}}><Link to="/">Activity</Link></Button> 
+          <Button ><Link to="/calls">Calls</Link></Button>
+          <Button ><Link to="/archived">Archived Calls</Link></Button>
         </nav>
       </div>
-      <div className="container-view">
+      {/* <div className="container-view">
         <CallFeed />
-      </div>
+      </div> */}
+      <Switch>
+        <Route exact path="/">
+          <div className="container-view">
+            <CallFeed />
+          </div>
+        </Route>
+        <Route path="/calls">
+          <div className="container-view">
+            <CallFeed />
+          </div>
+        </Route>
+        <Route path="/archived">
+          <div className="container-view">
+            <ArchivedCalls />
+          </div>
+        </Route>
+      </Switch>
     </div>
   );
 };

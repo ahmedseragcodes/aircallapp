@@ -1,11 +1,36 @@
-import React, { useState } from "react";
+//Tech Imports
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from 'react-redux';
+//Styling Imports
+import "../styling/callFeed.scss";
+import Button from "@mui/material/Button";
+//Comp Imports
+import { fetchArchivedCalls } from "../store/actions";
 
-const ArchivedCalls = () => {
+const ArchivedCalls = (props) => {
+
+  const [archCalls, setArchCalls] = useState([]);
+
+  useEffect(()=>{
+    props.fetchArchivedCalls();
+  },[])
+
     return (
-        <div className="archivedCallsContainer">
-            
+     
+        <div className="callFeedContainer">
+          { props.archivedCalls.length > 0 && props.archivedCalls.map((call)=>{
+                    return(
+                        <div key={call.id} className="individualCallCard">
+                            <p> {call.call_type} Call From {call.from} </p>
+                            <Button>Archive</Button>
+                        </div>
+                    )
+                }) 
+          }
+          {
+            props.archivedCalls.length < 1 && <Button style={{marginTop: "1em"}}>No Archived Calls</Button> 
+          }  
         </div>
     )
 }
@@ -18,4 +43,4 @@ const mapStateToProps = (state) => {
     })
   }
   
-  export default connect(mapStateToProps, {})(ArchivedCalls);
+  export default connect(mapStateToProps, {fetchArchivedCalls})(ArchivedCalls);

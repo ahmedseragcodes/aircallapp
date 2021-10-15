@@ -1,0 +1,14 @@
+.callFeedNavContainer {
+    .callFeedNav {
+        display: grid;
+        grid-template-columns: 50% 25% 25%;
+        Link, a {
+            text-decoration: none;
+            color: black;
+        }
+        Button {
+            border-radius: 1em;
+            color: black;
+        }
+    }
+}
