@@ -24,7 +24,13 @@ export const fetchCalls = () => (dispatch) => {
 //Redux Thunk For Archiving Call, 2 Actions Built In
 //POST should be changed to PUT, but API only supports POST for now according to ReadMe, consult backend when time available
 export const archiveCall = (callToArchive) => (dispatch)=>{
-    axios.post(`https://aircall-job.herokuapp.com/activities/${callToArchive.id}`)
+
+    const reformattedCallToArchive = {
+        ...callToArchive,
+        is_archived: true,
+    }
+
+    axios.post(`https://aircall-job.herokuapp.com/activities/${reformattedCallToArchive.id}`, reformattedCallToArchive)
     .then((res)=>{
         console.log("SUCCEEDED ARCHIVING CALL", res);
         dispatch({ type: ARCHIVE_CALL_SUCCESS, payload: res.data })
@@ -35,6 +41,7 @@ export const archiveCall = (callToArchive) => (dispatch)=>{
     })
 }
 
+//Redux thunk for fetching archived calls, 2 actions contained
 export const fetchArchivedCalls = () => (dispatch) => {
     axios.get('https://aircall-job.herokuapp.com/activities')
     .then((res)=>{

@@ -16,7 +16,7 @@ const CallFeed = (props) => {
         props.fetchCalls();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[refreshHold])
-    
+   
 
     return (
         <div className="callFeedContainer">
@@ -25,7 +25,7 @@ const CallFeed = (props) => {
                     return(
                         <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
-                            <Button>Archive</Button>
+                            <Button onClick={()=>props.archiveCall(call)} >Archive</Button>
                         </div>
                     )
                 })
