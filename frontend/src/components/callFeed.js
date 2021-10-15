@@ -1,14 +1,35 @@
+//Tech Imports
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+//Comp Imports
+import { fetchCalls, archiveCall } from "../store/actions";
+//Styling Imports
+import "../styling/callFeed.scss";
+import Button from "@mui/material/Button";
 
-const CallFeed = () => {
+const CallFeed = (props) => {
 
-    const [allCalls, setAllCalls]= useState([]);
+    const [refreshHold, setRefreshHold]=useState("");
+
+    useEffect(()=>{
+        props.fetchCalls();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+    
 
     return (
         <div className="callFeedContainer">
-
+            {
+                props.allCalls.map((call)=>{
+                    return(
+                        <div className="individualCallCard">
+                            <p> {call.call_type} Call From {call.from} </p>
+                            <Button>Archive</Button>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 
@@ -22,4 +43,4 @@ const mapStateToProps = (state) => {
     })
   }
   
-  export default connect(mapStateToProps, {})(CallFeed);
+  export default connect(mapStateToProps, {fetchCalls, archiveCall})(CallFeed);

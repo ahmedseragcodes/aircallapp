@@ -1,10 +1,11 @@
 //Tech Imports
 import React, { useState } from 'react';
 import { connect } from "react-redux";
+import { Link, Route, Switch } from "react-router-dom";
 //Styling Imports
-import "./css/app.css";
-import "./css/body.css";
-import "./css/header.css";
+import "./styling/app.css";
+import "./styling/body.css";
+import "./styling/header.css";
 //Comp Imports
 import Header from "./components/header";
 import CallFeed from "./components/callFeed";
@@ -14,8 +15,15 @@ const App = () => {
   return (
     <div className='container'>
       <Header/>
+      <div className="callFeedNavContainer">
+        <nav className="callFeedNav">
+          <Link to="/">Home</Link>
+          <Link to="/calls">Calls</Link>
+          <Link to="/archived">Archived Calls</Link>
+        </nav>
+      </div>
       <div className="container-view">
-        <callFeed />
+        <CallFeed />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-#app {
+#root {
   position: absolute;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   left: 0;
   top: 0;
@@ -9,9 +9,9 @@
   bottom: 0;
 }
 
-#app .container {
-  width: 376px;
-  height: 666px;
+#root .container {
+  width: 376px; /* Might need to change this to auto */
+  height: auto;
   z-index: 100;
 
   background: white;
@@ -19,7 +19,8 @@
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
 }
 
-#app .container-view {
+#root .container-view {
   padding: 20px;
 }
+
 
