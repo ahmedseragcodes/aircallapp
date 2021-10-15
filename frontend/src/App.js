@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+//Tech Imports
+import React, { useState } from 'react';
+//Styling Imports
+import "./css/app.css";
+import "./css/body.css";
+import "./css/header.css";
+//Comp Imports
+import Header from "./components/header";
+import CallFeed from "./components/callFeed";
+import ArchivedCalls from "./components/archivedCalls";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Header/>
+      <div className="container-view">
+        <callFeed />
+      </div>
     </div>
   );
-}
+};
+
 
 export default App;
