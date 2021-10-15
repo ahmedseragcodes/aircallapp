@@ -1,0 +1,11 @@
+.detailedCallContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    box-shadow: 1em 1em 1em 0 #eee;
+    shadow-offset: {
+      width: 0;
+      height: 2;
+    }
+}

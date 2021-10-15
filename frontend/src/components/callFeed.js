@@ -19,6 +19,11 @@ const CallFeed = (props) => {
         props.fetchCalls();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[refreshHold])
+
+    //Upon clicking Details button on individual call this runs
+    const getDetails = (callDetailsToGet) => {
+        history.push(`/call/${callDetailsToGet.id}`)
+    }
    
 
     return (
@@ -29,7 +34,7 @@ const CallFeed = (props) => {
                         <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
                             <Button onClick={()=>props.archiveCall(call)} >Archive</Button>
-                            <Button onClick={()=>props.archiveCall(call)} >Details</Button>
+                            <Button onClick={()=>getDetails(call)} >Details</Button>
                         </div>
                     )
                 })

@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Header from "./components/header";
 import CallFeed from "./components/callFeed";
 import ArchivedCalls from "./components/archivedCalls";
+import CallDetails from "./components/callDetails";
 
 const App = () => {
   return (
@@ -41,6 +42,11 @@ const App = () => {
         <Route path="/archived">
           <div className="container-view">
             <ArchivedCalls />
+          </div>
+        </Route>
+        <Route path="/call/:id">
+          <div className="container-view">
+            <CallDetails />
           </div>
         </Route>
       </Switch>
