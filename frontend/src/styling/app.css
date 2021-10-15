@@ -11,9 +11,8 @@
 
 #root .container {
   width: 376px; /* Might need to change this to auto */
-  height: auto;
+  height: 150%;
   z-index: 100;
-
   background: white;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
