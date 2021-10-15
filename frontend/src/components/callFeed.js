@@ -1,5 +1,6 @@
 //Tech Imports
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { connect } from "react-redux";
 //Comp Imports
@@ -11,6 +12,8 @@ import Button from "@mui/material/Button";
 const CallFeed = (props) => {
 
     const [refreshHold, setRefreshHold]=useState("");
+
+    const history = useHistory();
 
     useEffect(()=>{
         props.fetchCalls();
@@ -26,6 +29,7 @@ const CallFeed = (props) => {
                         <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
                             <Button onClick={()=>props.archiveCall(call)} >Archive</Button>
+                            <Button onClick={()=>props.archiveCall(call)} >Details</Button>
                         </div>
                     )
                 })
