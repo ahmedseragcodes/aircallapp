@@ -3,7 +3,7 @@ import axios from "axios";
 export const FETCH_CALLS_SUCCESS = "FETCH_CALLS_SUCCESS"; 
 export const FETCH_CALLS_FAILURE = "FETCH_CALLS_FAILURE";
 export const ARCHIVE_CALL_SUCCESS = "ARCHIVE_CALL_SUCCESS";
-export const ACHIVE_CALL_FAILURE = "ARCHIVE_CALL_FAILURE";
+export const ARCHIVE_CALL_FAILURE = "ARCHIVE_CALL_FAILURE";
 
 //Redux Thunk For Fetching Calls, 2 Actions Built In
 export const fetchCalls = () => (dispatch) => {

@@ -1,23 +1,26 @@
+//Tech Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import callFeed from "./components/CallFeed";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
+//Comp Imports
 import reducer from "./store/reducer";
 import App from './App';
+import reportWebVitals from './reportWebVitals';
+//Styling Imports
 import "./css/app.css";
 import "./css/body.css";
 import "./css/header.css";
-import reportWebVitals from './reportWebVitals';
 
-
+//Pls do not edit, essential to redux
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
