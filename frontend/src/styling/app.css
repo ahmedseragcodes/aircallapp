@@ -10,8 +10,8 @@
 }
 
 #root .container {
-  width: 376px;
-  height: 666px;
+  width: 376px; /* Might need to change this to auto */
+  height: auto;
   z-index: 100;
 
   background: white;
