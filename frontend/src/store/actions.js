@@ -38,12 +38,14 @@ export const archiveCall = (callToArchive) => (dispatch)=>{
 export const fetchArchivedCalls = () => (dispatch) => {
     axios.get('https://aircall-job.herokuapp.com/activities')
     .then((res)=>{
-        console.log("SUCCEEDED FETCHING ARCHIVED CALLS", res.data);
-        dispatch({ type: FETCH_ARCHIVED_SUCCESS, payload: res.data.map((individCall)=>{
-            if (individCall.is_archived === true){
+        console.log("SUCCEEDED FETCHING CALLS TO STAGE FOR FINDING ARCHIVED ONES", res.data);
+        let archCalls = [...res.data];
+        let archCallsFinal = archCalls.filter((individCall)=>{
+            if (individCall.is_archived == true){
                 return individCall;
             } 
-        }) });
+        })
+            dispatch({ type: FETCH_ARCHIVED_SUCCESS, payload: archCallsFinal });    
     })
     .catch((err)=>{
         console.log("FAILED FETCHING ARCHIVED CALLS", err.message);
