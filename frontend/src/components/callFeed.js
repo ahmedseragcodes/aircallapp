@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { fetchCalls, archiveCall } from "../store/actions";
 //Styling Imports
 import "../styling/callFeed.scss";
+import Button from "@mui/material/Button";
 
 const CallFeed = (props) => {
 
@@ -13,7 +14,8 @@ const CallFeed = (props) => {
 
     useEffect(()=>{
         props.fetchCalls();
-    },[refreshHold])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
     
 
     return (
@@ -22,7 +24,8 @@ const CallFeed = (props) => {
                 props.allCalls.map((call)=>{
                     return(
                         <div className="individualCallCard">
-                            <p> Incoming Call From {call.from} </p>
+                            <p> {call.call_type} Call From {call.from} </p>
+                            <Button>Archive</Button>
                         </div>
                     )
                 })

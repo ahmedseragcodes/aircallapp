@@ -1,7 +1,7 @@
 #root {
   position: absolute;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   left: 0;
   top: 0;
@@ -22,4 +22,5 @@
 #root .container-view {
   padding: 20px;
 }
+
 
