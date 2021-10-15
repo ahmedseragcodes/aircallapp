@@ -10,9 +10,9 @@ import reducer from "./store/reducer";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //Styling Imports
-import "./css/app.css";
-import "./css/body.css";
-import "./css/header.css";
+import "./styling/app.css";
+import "./styling/body.css";
+import "./styling/header.css";
 
 //Pls do not edit, essential to redux
 const store = createStore(reducer, applyMiddleware(thunk, logger));

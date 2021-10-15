@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
 //Styling Imports
-import "./css/app.css";
-import "./css/body.css";
-import "./css/header.css";
+import "./styling/app.css";
+import "./styling/body.css";
+import "./styling/header.css";
 //Comp Imports
 import Header from "./components/header";
 import CallFeed from "./components/callFeed";
@@ -15,7 +15,7 @@ const App = () => {
     <div className='container'>
       <Header/>
       <div className="container-view">
-        <callFeed />
+        <CallFeed />
       </div>
     </div>
   );

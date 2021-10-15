@@ -1,14 +1,32 @@
+//Tech Imports
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+//Comp Imports
+import { fetchCalls, archiveCall } from "../store/actions";
+//Styling Imports
+import "../styling/callFeed.scss";
 
-const CallFeed = () => {
+const CallFeed = (props) => {
 
-    const [allCalls, setAllCalls]= useState([]);
+    const [refreshHold, setRefreshHold]=useState("");
+
+    useEffect(()=>{
+        props.fetchCalls();
+    },[refreshHold])
+    
 
     return (
         <div className="callFeedContainer">
-
+            {
+                props.allCalls.map((call)=>{
+                    return(
+                        <div className="individualCallCard">
+                            <p> Incoming Call From {call.from} </p>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 
@@ -22,4 +40,4 @@ const mapStateToProps = (state) => {
     })
   }
   
-  export default connect(mapStateToProps, {})(CallFeed);
+  export default connect(mapStateToProps, {fetchCalls, archiveCall})(CallFeed);

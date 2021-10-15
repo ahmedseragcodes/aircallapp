@@ -1,0 +1,14 @@
+.callFeedContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1rem 1rem 1rem 1rem #eee;
+    .individualCallCard {
+        // background-color: white;
+        box-shadow: 1rem 1rem 1rem 1rem black;
+        color: black;
+        padding: 1em;
+        margin: 1.2em;
+        border-radius: 1.5em;
+    }
+}
