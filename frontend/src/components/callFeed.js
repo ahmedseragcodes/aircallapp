@@ -33,8 +33,8 @@ const CallFeed = (props) => {
                     return(
                         <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
-                            <Button onClick={()=>props.archiveCall(call)} >Archive</Button>
-                            <Button onClick={()=>getDetails(call)} >Details</Button>
+                            <Button key={Math.random()} onClick={()=>props.archiveCall(call)} >Archive</Button>
+                            <Button key={Math.random()} onClick={()=>getDetails(call)} >Details</Button>
                         </div>
                     )
                 })

@@ -23,13 +23,13 @@ const ArchivedCalls = (props) => {
                     return(
                         <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
-                            <Button onClick={()=>props.unarchiveCall(call)} >Unarchive</Button>
+                            <Button key={Math.random()} onClick={()=>props.unarchiveCall(call)} >Unarchive</Button>
                         </div>
                     )
                 }) 
           }
           {
-            props.archivedCalls.length < 1 && <Button style={{marginTop: "1em"}}>No Archived Calls</Button> 
+            props.archivedCalls.length < 1 && <Button key={Math.random()} style={{marginTop: "1em"}}>No Archived Calls</Button> 
           }  
         </div>
     )
