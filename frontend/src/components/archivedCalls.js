@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import "../styling/callFeed.scss";
 import Button from "@mui/material/Button";
 //Comp Imports
-import { fetchArchivedCalls } from "../store/actions";
+import { fetchArchivedCalls, unarchiveCall } from "../store/actions";
 
 const ArchivedCalls = (props) => {
 
@@ -23,7 +23,7 @@ const ArchivedCalls = (props) => {
                     return(
                         <div key={call.id} className="individualCallCard">
                             <p> {call.call_type} Call From {call.from} </p>
-                            <Button>Archive</Button>
+                            <Button onClick={()=>props.unarchiveCall(call)} >Unarchive</Button>
                         </div>
                     )
                 }) 
@@ -43,4 +43,4 @@ const mapStateToProps = (state) => {
     })
   }
   
-  export default connect(mapStateToProps, {fetchArchivedCalls})(ArchivedCalls);
+  export default connect(mapStateToProps, {fetchArchivedCalls, unarchiveCall})(ArchivedCalls);
