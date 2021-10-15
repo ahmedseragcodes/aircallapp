@@ -1,5 +1,6 @@
 //Tech Imports
 import React, { useState } from 'react';
+import { connect } from "react-redux";
 //Styling Imports
 import "./css/app.css";
 import "./css/body.css";
@@ -20,5 +21,12 @@ const App = () => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return ({
+    allCalls: state.allCalls,
+    archivedCalls: state.archivedCalls,
+    error: state.error,
+  })
+}
 
-export default App;
+export default connect(mapStateToProps, {})(App);
