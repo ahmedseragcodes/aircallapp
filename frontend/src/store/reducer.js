@@ -1,7 +1,7 @@
 //Tech Imports
 import React from "react";
 //Action Imports
-import { FETCH_CALLS_SUCCESS, FETCH_CALLS_FAILURE, ARCHIVE_CALL_SUCCESS, ARCHIVE_CALL_FAILURE, FETCH_ARCHIVED_SUCCESS, FETCH_ARCHIVED_FAILURE } from "./actions"
+import { FETCH_CALLS_SUCCESS, FETCH_CALLS_FAILURE, ARCHIVE_CALL_SUCCESS, ARCHIVE_CALL_FAILURE, FETCH_ARCHIVED_SUCCESS, FETCH_ARCHIVED_FAILURE, fetchArchivedCalls } from "./actions"
 
 const initialState = {
     allCalls: [],
@@ -24,6 +24,11 @@ const reducer = (state=initialState, action)=>{
         case(ARCHIVE_CALL_SUCCESS):
             return {
                 ...state,
+                allCalls: state.allCalls.filter((uniqueCall)=>{
+                    if(uniqueCall.id !== action.payload.id){
+                        return uniqueCall;
+                    }
+                }),
                 archivedCalls: [...state.archivedCalls, action.payload],
             };
         case(ARCHIVE_CALL_FAILURE):
