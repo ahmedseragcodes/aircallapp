@@ -30,7 +30,7 @@ const ArchivedCalls = (props) => {
           { props.archivedCalls.length > 0 && props.archivedCalls.map((call)=>{
                     return(
                         <div key={call.id} className="individualCallCard">
-                            <p> {call.call_type} Call From {call.from} </p>
+                            <p> 📞 {call.call_type.toUpperCase()} Call From {call.from} </p>
                             <Button key={Math.random()} onClick={()=>props.unarchiveCall(call)} >Unarchive</Button>
                         </div>
                     )

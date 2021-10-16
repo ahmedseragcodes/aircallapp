@@ -1,5 +1,5 @@
 //Tech Imports
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import { Link, Route, Switch } from "react-router-dom";
 //Styling Imports
@@ -22,12 +22,9 @@ const App = () => {
         <nav className="callFeedNav">
           <Button style={{backgroundColor: "#32CD32"}}><Link to="/">Activity</Link></Button> 
           <Button ><Link to="/calls">Calls</Link></Button>
-          <Button ><Link to="/archived">Archived Calls</Link></Button>
+          <Button ><Link to="/archived">Archived</Link></Button>
         </nav>
       </div>
-      {/* <div className="container-view">
-        <CallFeed />
-      </div> */}
       <Switch>
         <Route exact path="/">
           <div className="container-view">

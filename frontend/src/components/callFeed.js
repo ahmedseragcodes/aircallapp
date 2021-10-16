@@ -18,13 +18,16 @@ const CallFeed = (props) => {
     useEffect(()=>{
         props.fetchCalls();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[refreshHold])
+    },[])
 
     //Upon clicking Details button on individual call this runs
     const getDetails = (callDetailsToGet) => {
         history.push(`/call/${callDetailsToGet.id}`)
     }
+
+
    
+     /* ✔🎁🎈🔉🎧📞☎💻💡📍📂📌⌛⚡ */
 
     return (
         <div className="callFeedContainer">
@@ -32,7 +35,7 @@ const CallFeed = (props) => {
                 props.allCalls.map((call)=>{
                     return(
                         <div key={call.id} className="individualCallCard">
-                            <p> {call.call_type} Call From {call.from} </p>
+                            <p> 📞 {call.call_type.toUpperCase()} Call From {call.from} </p>
                             <Button key={Math.random()} onClick={()=>props.archiveCall(call)} >Archive</Button>
                             <Button key={Math.random()} onClick={()=>getDetails(call)} >Details</Button>
                         </div>

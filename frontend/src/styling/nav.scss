@@ -1,14 +1,28 @@
 .callFeedNavContainer {
     .callFeedNav {
         display: grid;
-        grid-template-columns: 50% 25% 25%;
+        grid-template-columns: 45% 25% 25%;
+        text-align: center;
+        align-items: center;
         Link, a {
             text-decoration: none;
             color: black;
+            font-size: 1.1em;
         }
         Button {
             border-radius: 1em;
+            padding: .75em;
             color: black;
+            box-shadow: 1em 1em 1em 0 #eee;
+            margin: .5em;
         }
     }
 }
+
+/* MEDIA QUERY MOBILE */
+
+@media (max-width: 600px){
+    .callFeedNav {
+        margin: 1em;
+    }
+  }

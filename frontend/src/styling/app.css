@@ -11,7 +11,7 @@
 
 #root .container {
   width: 400px; /* Might need to change this to auto */
-  height: 150%;
+  height: 200%;
   z-index: 100;
   background: white;
   border-radius: 3px;
@@ -25,8 +25,9 @@
 
 /* MEDIA QUERY MOBILE */
 
-/* @media (max-width: 600px){
+@media (max-width: 600px){
   #root .container {
-    height: auto;
+    width: auto;
+    height: 300%;
   }
-} */
+}

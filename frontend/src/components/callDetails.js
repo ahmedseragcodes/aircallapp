@@ -7,7 +7,7 @@ import "../styling/callDetails.scss";
 import "../styling/app.css";
 import Button from "@mui/material/Button";
 //Comp Imports
-import { fetchCalls } from "../store/actions";
+import { fetchCalls, archiveCall } from "../store/actions";
 
 
 /* useful emojis ✔🎁🎈🔉🎧☎📞💻💡📍📂📌⌛⚡ */
@@ -48,7 +48,7 @@ const CallDetails = (props) => {
         history.push("/calls");
     }
 
-    /* ✔🎁🎈🔉🎧📞☎💻💡📍📂📌⌛⚡ */
+   
     return (
         <div>
         {
@@ -81,4 +81,4 @@ const mapStateToProps = (state) => {
     })
   }
   
-  export default connect(mapStateToProps, { fetchCalls, })(CallDetails);
+  export default connect(mapStateToProps, { fetchCalls, archiveCall })(CallDetails);
