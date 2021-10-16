@@ -1,0 +1,26 @@
+.footerContainer {
+    display: grid;
+    grid-template-columns: 50%;
+    justify-items: center;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    .footerAppBar {
+        img {
+            width: 1.5em;
+        }
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 1em;
+        .iconButton {
+            margin: .5em;
+            border-radius: 1em;
+            box-shadow: 1em 1em 1em 0 black;
+            shadow-offset: {
+                width: 0;
+                height: 2;
+            }
+        }
+    }
+}
