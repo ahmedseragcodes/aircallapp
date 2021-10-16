@@ -13,6 +13,7 @@ import Header from "./components/header";
 import CallFeed from "./components/callFeed";
 import ArchivedCalls from "./components/archivedCalls";
 import CallDetails from "./components/callDetails";
+import FooterCommandLine from "./components/footer";
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
           </div>
         </Route>
       </Switch>
+      <FooterCommandLine />
     </div>
   );
 };
