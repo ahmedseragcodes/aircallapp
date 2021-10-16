@@ -10,7 +10,7 @@
 }
 
 #root .container {
-  width: 376px; /* Might need to change this to auto */
+  width: 400px; /* Might need to change this to auto */
   height: 150%;
   z-index: 100;
   background: white;
@@ -23,3 +23,10 @@
 }
 
 
+/* MEDIA QUERY MOBILE */
+
+/* @media (max-width: 600px){
+  #root .container {
+    height: auto;
+  }
+} */

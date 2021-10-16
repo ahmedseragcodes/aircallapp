@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import { fetchCalls } from "../store/actions";
 
 
+/* useful emojis ✔🎁🎈🔉🎧☎📞💻💡📍📂📌⌛⚡ */
+
 const CallDetails = (props) => {
 
     const history = useHistory();
@@ -21,13 +23,16 @@ const CallDetails = (props) => {
     //populating state
     useEffect(()=>{
         props.fetchCalls();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
         let foundCall;
         const idToFind = params.id;
         console.log("Clicked on details, here's what all calls looks like", props.allCalls)
+        // eslint-disable-next-line array-callback-return
         props.allCalls.filter((uniqueCall)=>{
+            // eslint-disable-next-line eqeqeq
             if (uniqueCall.id == idToFind){
                 foundCall= uniqueCall;
                 return foundCall;
@@ -35,6 +40,7 @@ const CallDetails = (props) => {
         })
         setCallToDisplay(foundCall);
         console.log("The Call That Will Be Displayed", foundCall);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     //Upon clicking All Calls button, this runs and sends user back to calls and home route (same)
@@ -42,19 +48,20 @@ const CallDetails = (props) => {
         history.push("/calls");
     }
 
+    /* ✔🎁🎈🔉🎧📞☎💻💡📍📂📌⌛⚡ */
     return (
         <div>
         {
             callToDisplay ? (
             <div className="detailedCallContainer">
-            <h3>Call Details</h3>
-            <p>Call Type {callToDisplay.call_type} From {callToDisplay.from}</p>
-            <p>Date Received {callToDisplay.created_at} </p>
-            <p>Call From {callToDisplay.from}</p>
-            <p>Call To {callToDisplay.to} </p>
-            <p>Call Duration {callToDisplay.duration} Seconds</p>
-            <Button key={Math.random()} onClick={()=>props.archiveCall(callToDisplay)} >Archive</Button>
-            <Button key={Math.random()} onClick={()=>seeAllCalls()}>All Calls</Button>
+                <h2>Call Details</h2>
+                <p>Call Type 📞 {callToDisplay.call_type}</p>
+                <p>Date Received 📂 {callToDisplay.created_at} </p>
+                <p>Call From ☎ {callToDisplay.from}</p>
+                <p>Call To ☎ {callToDisplay.to} </p>
+                <p>Call Duration ⌛ {callToDisplay.duration} Seconds</p>
+                <Button key={Math.random()} onClick={()=>props.archiveCall(callToDisplay)} >Archive</Button>
+                <Button key={Math.random()} onClick={()=>seeAllCalls()}>All Calls</Button>
             </div>
             ) : (
                 <div className="noDetailsContainer">
