@@ -19,18 +19,23 @@ const CallDetails = (props) => {
     const [callToDisplay, setCallToDisplay]=useState({});
 
     //populating state
-    // props.fetchCalls();
+    useEffect(()=>{
+        props.fetchCalls();
+    },[])
 
     useEffect(()=>{
+        let foundCall;
         const idToFind = params.id;
-        const foundCall = props.allCalls.filter((uniqueCall)=>{
-            if (uniqueCall.id === idToFind){
-                return uniqueCall;
+        console.log("Clicked on details, here's what all calls looks like", props.allCalls)
+        props.allCalls.filter((uniqueCall)=>{
+            if (uniqueCall.id == idToFind){
+                foundCall= uniqueCall;
+                return foundCall;
             } 
         })
-        setCallToDisplay(foundCall[0]);
+        setCallToDisplay(foundCall);
         console.log("The Call That Will Be Displayed", foundCall);
-    },[props.allCalls, params])
+    },[])
 
     //Upon clicking All Calls button, this runs and sends user back to calls and home route (same)
     const seeAllCalls = () => {
@@ -40,7 +45,7 @@ const CallDetails = (props) => {
     return (
         <div>
         {
-            callToDisplay === true ? (
+            callToDisplay ? (
             <div className="detailedCallContainer">
             <h3>Call Details</h3>
             <p>Call Type {callToDisplay.call_type} From {callToDisplay.from}</p>
