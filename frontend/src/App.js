@@ -1,5 +1,5 @@
 //Tech Imports
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import { Link, Route, Switch } from "react-router-dom";
 //Styling Imports
@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Header from "./components/header";
 import CallFeed from "./components/callFeed";
 import ArchivedCalls from "./components/archivedCalls";
+import CallDetails from "./components/callDetails";
 
 const App = () => {
   return (
@@ -21,12 +22,9 @@ const App = () => {
         <nav className="callFeedNav">
           <Button style={{backgroundColor: "#32CD32"}}><Link to="/">Activity</Link></Button> 
           <Button ><Link to="/calls">Calls</Link></Button>
-          <Button ><Link to="/archived">Archived Calls</Link></Button>
+          <Button ><Link to="/archived">Archived</Link></Button>
         </nav>
       </div>
-      {/* <div className="container-view">
-        <CallFeed />
-      </div> */}
       <Switch>
         <Route exact path="/">
           <div className="container-view">
@@ -41,6 +39,11 @@ const App = () => {
         <Route path="/archived">
           <div className="container-view">
             <ArchivedCalls />
+          </div>
+        </Route>
+        <Route path="/call/:id">
+          <div className="container-view">
+            <CallDetails />
           </div>
         </Route>
       </Switch>

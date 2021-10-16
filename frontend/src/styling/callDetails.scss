@@ -1,0 +1,30 @@
+.detailedCallContainer {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    font-size: 1.2em;
+    box-shadow: 1em 1em 1em 0 #eee;
+    shadow-offset: {
+      width: 0;
+      height: 2;
+    }
+    h2 {
+        font-size: 1.3em;
+        margin: .7em;
+    }
+
+}
+.noDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    box-shadow: 1em 1em 1em 0 #eee;
+    shadow-offset: {
+      width: 0;
+      height: 2;
+}
+}

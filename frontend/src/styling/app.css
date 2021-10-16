@@ -1,7 +1,6 @@
 #root {
   position: absolute;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   left: 0;
   top: 0;
@@ -10,8 +9,8 @@
 }
 
 #root .container {
-  width: 376px; /* Might need to change this to auto */
-  height: 150%;
+  width: 400px; 
+  height: 200%;
   z-index: 100;
   background: white;
   border-radius: 3px;
@@ -23,3 +22,11 @@
 }
 
 
+/* MEDIA QUERY MOBILE */
+
+@media (max-width: 600px){
+  #root .container {
+    width: auto;
+    height: 300%;
+  }
+}

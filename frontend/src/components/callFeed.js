@@ -1,6 +1,6 @@
 //Tech Imports
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 //Comp Imports
 import { fetchCalls, archiveCall } from "../store/actions";
@@ -10,13 +10,18 @@ import Button from "@mui/material/Button";
 
 const CallFeed = (props) => {
 
-    const [refreshHold, setRefreshHold]=useState("");
+    const history = useHistory();
 
     useEffect(()=>{
         props.fetchCalls();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[refreshHold])
-   
+    },[])
+
+    //Upon clicking Details button on individual call this runs
+    const getDetails = (callDetailsToGet) => {
+        history.push(`/call/${callDetailsToGet.id}`)
+    }
+
 
     return (
         <div className="callFeedContainer">
@@ -24,8 +29,9 @@ const CallFeed = (props) => {
                 props.allCalls.map((call)=>{
                     return(
                         <div key={call.id} className="individualCallCard">
-                            <p> {call.call_type} Call From {call.from} </p>
-                            <Button onClick={()=>props.archiveCall(call)} >Archive</Button>
+                            <p> 📞 {call.call_type.toUpperCase()} Call From {call.from} </p>
+                            <Button key={Math.random()} onClick={()=>props.archiveCall(call)} >Archive</Button>
+                            <Button key={Math.random()} onClick={()=>getDetails(call)} >Details</Button>
                         </div>
                     )
                 })
