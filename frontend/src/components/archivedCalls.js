@@ -1,7 +1,6 @@
 //Tech Imports
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { connect } from 'react-redux';
 //Styling Imports
 import "../styling/callFeed.scss";
@@ -13,10 +12,11 @@ import { fetchArchivedCalls, unarchiveCall } from "../store/actions";
 const ArchivedCalls = (props) => {
 
   const history = useHistory();
-  const [archCalls, setArchCalls] = useState([]);
+
 
   useEffect(()=>{
     props.fetchArchivedCalls();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   //Upon clicking All Calls button, this runs and sends user back to calls and home route (same)

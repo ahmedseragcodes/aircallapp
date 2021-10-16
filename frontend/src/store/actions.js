@@ -10,6 +10,7 @@ export const UN_ARCHIVE_CALL_SUCCESS="UN_ARCHIVE_CALL_SUCCESS";
 export const UN_ARCHIVE_CALL_FAILURE="UN_ARCHIVE_CALL_FAILURE";
 
 //ACTIONS
+//FYI NORMALLY I'D REMOVE THESE CONSOLE LOGS, BUT I THINK IT MAY BE USEFUL FOR YOU WHEN TRAVERSING CODEBASE
 
 //[GET] All Calls, 2 Actions Contained
 export const fetchCalls = () => (dispatch) => {
@@ -51,7 +52,9 @@ export const fetchArchivedCalls = () => (dispatch) => {
     .then((res)=>{
         console.log("SUCCEEDED FETCHING CALLS TO STAGE FOR FINDING ARCHIVED ONES", res.data);
         let archCalls = [...res.data];
+        // eslint-disable-next-line array-callback-return
         let archCallsFinal = archCalls.filter((individCall)=>{
+            // eslint-disable-next-line eqeqeq
             if (individCall.is_archived == true){
                 return individCall;
             } 

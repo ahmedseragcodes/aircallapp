@@ -1,7 +1,6 @@
 //Tech Imports
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
 import { connect } from "react-redux";
 //Comp Imports
 import { fetchCalls, archiveCall } from "../store/actions";
@@ -10,8 +9,6 @@ import "../styling/callFeed.scss";
 import Button from "@mui/material/Button";
 
 const CallFeed = (props) => {
-
-    const [refreshHold, setRefreshHold]=useState("");
 
     const history = useHistory();
 
@@ -25,9 +22,6 @@ const CallFeed = (props) => {
         history.push(`/call/${callDetailsToGet.id}`)
     }
 
-
-   
-     /* ✔🎁🎈🔉🎧📞☎💻💡📍📂📌⌛⚡ */
 
     return (
         <div className="callFeedContainer">

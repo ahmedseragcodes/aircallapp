@@ -10,7 +10,6 @@ import Button from "@mui/material/Button";
 import { fetchCalls, archiveCall } from "../store/actions";
 
 
-/* useful emojis ✔🎁🎈🔉🎧☎📞💻💡📍📂📌⌛⚡ */
 
 const CallDetails = (props) => {
 
@@ -29,7 +28,6 @@ const CallDetails = (props) => {
     useEffect(()=>{
         let foundCall;
         const idToFind = params.id;
-        console.log("Clicked on details, here's what all calls looks like", props.allCalls)
         // eslint-disable-next-line array-callback-return
         props.allCalls.filter((uniqueCall)=>{
             // eslint-disable-next-line eqeqeq
@@ -39,7 +37,6 @@ const CallDetails = (props) => {
             } 
         })
         setCallToDisplay(foundCall);
-        console.log("The Call That Will Be Displayed", foundCall);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 

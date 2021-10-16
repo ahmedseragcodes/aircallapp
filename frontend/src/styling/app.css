@@ -1,7 +1,6 @@
 #root {
   position: absolute;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   left: 0;
   top: 0;
@@ -10,7 +9,7 @@
 }
 
 #root .container {
-  width: 400px; /* Might need to change this to auto */
+  width: 400px; 
   height: 200%;
   z-index: 100;
   background: white;
