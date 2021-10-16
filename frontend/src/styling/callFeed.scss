@@ -21,3 +21,16 @@
         border-radius: 1.5em;
     }
 }
+
+Button {
+    border-radius: 1em;
+}
+
+.noArchivedCallsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    Button {
+        margin: 2em;
+    }
+}

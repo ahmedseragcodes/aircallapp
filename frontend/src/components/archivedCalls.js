@@ -1,20 +1,28 @@
 //Tech Imports
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from 'react-redux';
 //Styling Imports
 import "../styling/callFeed.scss";
+import "../styling/app.css";
 import Button from "@mui/material/Button";
 //Comp Imports
 import { fetchArchivedCalls, unarchiveCall } from "../store/actions";
 
 const ArchivedCalls = (props) => {
 
+  const history = useHistory();
   const [archCalls, setArchCalls] = useState([]);
 
   useEffect(()=>{
     props.fetchArchivedCalls();
   },[])
+
+  //Upon clicking All Calls button, this runs and sends user back to calls and home route (same)
+  const seeAllCalls = () => {
+    history.push("/calls");
+}
 
     return (
      
@@ -29,8 +37,11 @@ const ArchivedCalls = (props) => {
                 }) 
           }
           {
-            props.archivedCalls.length < 1 && <Button key={Math.random()} style={{marginTop: "1em"}}>No Archived Calls</Button> 
-          }  
+            props.archivedCalls.length < 1 && (
+            <div className="noArchivedCallsContainer"> 
+              <Button key={Math.random()} style={{marginTop: "1em"}} onClick={()=>seeAllCalls()} >No Archived Calls</Button>
+            </div>
+            )}  
         </div>
     )
 }

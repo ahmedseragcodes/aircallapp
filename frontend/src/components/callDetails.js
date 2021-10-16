@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 //Styling Imports
 import "../styling/callDetails.scss";
+import "../styling/app.css";
 import Button from "@mui/material/Button";
 //Comp Imports
 import { fetchCalls } from "../store/actions";
@@ -17,17 +18,19 @@ const CallDetails = (props) => {
 
     const [callToDisplay, setCallToDisplay]=useState({});
 
+    //populating state
+    // props.fetchCalls();
+
     useEffect(()=>{
-        props.fetchCalls();
         const idToFind = params.id;
         const foundCall = props.allCalls.filter((uniqueCall)=>{
             if (uniqueCall.id === idToFind){
                 return uniqueCall;
-            }
+            } 
         })
-        setCallToDisplay(foundCall);
+        setCallToDisplay(foundCall[0]);
         console.log("The Call That Will Be Displayed", foundCall);
-    },[])
+    },[props.allCalls, params])
 
     //Upon clicking All Calls button, this runs and sends user back to calls and home route (same)
     const seeAllCalls = () => {
@@ -35,7 +38,10 @@ const CallDetails = (props) => {
     }
 
     return (
-        <div className="detailedCallContainer">
+        <div>
+        {
+            callToDisplay === true ? (
+            <div className="detailedCallContainer">
             <h3>Call Details</h3>
             <p>Call Type {callToDisplay.call_type} From {callToDisplay.from}</p>
             <p>Date Received {callToDisplay.created_at} </p>
@@ -44,7 +50,13 @@ const CallDetails = (props) => {
             <p>Call Duration {callToDisplay.duration} Seconds</p>
             <Button key={Math.random()} onClick={()=>props.archiveCall(callToDisplay)} >Archive</Button>
             <Button key={Math.random()} onClick={()=>seeAllCalls()}>All Calls</Button>
-
+            </div>
+            ) : (
+                <div className="noDetailsContainer">
+                    <Button key={Math.random()} style={{marginTop: "1em"}} onClick={()=>seeAllCalls()}>No Call Details To Display</Button>
+                </div>
+            )
+        }
         </div>
     )
 }
